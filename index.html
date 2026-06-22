@@ -11,22 +11,11 @@
   .step { background: #1e1e1e; border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; border-right: 4px solid #2a6fdb; }
   .step-num { background: #2a6fdb; color: #fff; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; margin-left: 8px; }
   .step h2 { display: inline; font-size: 16px; color: #fff; }
-  .step p { margin-top: 8px; font-size: 14px; color: #aaa; line-height: 1.5; }
-  .bookmarklet-box { background: #0a2040; border: 2px dashed #2a6fdb; border-radius: 10px; padding: 16px; text-align: center; margin: 14px 0; }
-  .bookmarklet-box p { font-size: 13px; color: #88aadd; margin-bottom: 12px; }
-  #bm-link {
-    display: inline-block;
-    background: #2a6fdb;
-    color: #fff;
-    padding: 14px 24px;
-    border-radius: 10px;
-    font-size: 18px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-  }
+  .step p { margin-top: 8px; font-size: 14px; color: #aaa; line-height: 1.6; }
   .tip { background: #1a2a1a; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #88cc88; margin-top: 10px; border-right: 3px solid #3a8a3a; }
+  #code-box { width: 100%; height: 72px; background: #0d0d0d; color: #7af; border: 1px solid #444; border-radius: 8px; font-size: 11px; padding: 8px; direction: ltr; text-align: left; resize: none; box-sizing: border-box; margin: 10px 0 6px; font-family: monospace; }
+  #select-btn { width: 100%; padding: 14px; background: #2a6fdb; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+  #copied-msg { color: #88cc88; font-size: 13px; text-align: center; margin-top: 6px; min-height: 18px; }
   .demo { background: #1e1e1e; border-radius: 10px; padding: 14px; margin-bottom: 14px; }
   .demo h2 { font-size: 16px; color: #fff; margin-bottom: 10px; }
   #demo-input { width: 100%; font-size: 18px; padding: 10px; background: #2a2a2a; border: 1px solid #555; border-radius: 8px; color: #fff; direction: rtl; text-align: right; box-sizing: border-box; }
@@ -44,23 +33,36 @@
 <p class="subtitle">הקלד עברית בכל אתר — כולל reads.e-vrit.co.il</p>
 
 <div class="step">
-  <span class="step-num">1</span><h2>שמור את הקישור הבא כסימניה</h2>
-  <p>לחץ לחיצה ארוכה על הכפתור הכחול ← "הוסף סימניה" (או גרור לשורת הסימניות במחשב)</p>
-  <div class="bookmarklet-box">
-    <p>גרור לשורת הסימניות, או לחץ לחיצה ארוכה בקינדל ← "הוסף סימניה"</p>
-    <a id="bm-link" href="#">⌨ עברית</a>
-  </div>
-  <div class="tip">💡 בקינדל: פתח את הדפדפן ← סימניות ← תפריט ← הוסף סימניה ידנית ← הדבק את הקוד</div>
+  <span class="step-num">1</span><h2>העתק את קוד המקלדת</h2>
+  <p>לחץ על הכפתור הכחול — הקוד יסומן אוטומטית.<br>
+     אחר כך לחץ לחיצה ארוכה על הטקסט ← <strong>העתק</strong></p>
+  <textarea id="code-box" readonly></textarea>
+  <button id="select-btn" onclick="selectCode()">▶ לחץ כאן לסימון הקוד</button>
+  <div id="copied-msg"></div>
 </div>
 
 <div class="step">
-  <span class="step-num">2</span><h2>איך להשתמש</h2>
+  <span class="step-num">2</span><h2>צור סימניה ידנית בקינדל</h2>
+  <p>
+    1. פתח כל דף בדפדפן הקינדל<br>
+    2. לחץ על סמל הכוכב ☆ או תפריט ← <strong>הוסף סימניה</strong><br>
+    3. ערוך את הסימניה שנוצרה:<br>
+    &nbsp;&nbsp;&nbsp;• <strong>שם:</strong> ⌨ עברית<br>
+    &nbsp;&nbsp;&nbsp;• <strong>כתובת URL:</strong> מחק הכל ← הדבק את הקוד שהעתקת<br>
+    4. שמור
+  </p>
+  <div class="tip">💡 הקוד מתחיל ב־ <strong>javascript:</strong> — זה תקין, כך עובדות סימניות קוד</div>
+</div>
+
+<div class="step">
+  <span class="step-num">3</span><h2>איך להשתמש באתר e-vrit</h2>
+
   <p>
     1. גש לאתר <strong>reads.e-vrit.co.il</strong><br>
     2. לחץ על תיבת החיפוש כדי להפעילה<br>
-    3. פתח את הסימניות ← לחץ על <strong>⌨ עברית</strong><br>
-    4. מקלדת צפה מהתחתית — לחץ על האותיות<br>
-    5. לחץ <strong>⏎ חפש</strong> או סגור את המקלדת וחפש
+    3. פתח סימניות ← לחץ על <strong>⌨ עברית</strong><br>
+    4. מקלדת תצוץ מהתחתית — לחץ על האותיות<br>
+    5. לחץ <strong>⏎ חפש</strong> לחיפוש
   </p>
 </div>
 
@@ -71,10 +73,22 @@
 </div>
 
 <script>
-// Build bookmarklet code
 var bm = '(function(){var ID="heb-kb-ov";var ex=document.getElementById(ID);if(ex){ex.remove();return;}var si=document.activeElement;function ins(c){if(!si||!si.tagName.match(/INPUT|TEXTAREA/i))return;si.focus();if(!document.execCommand("insertText",false,c)){var s=si.selectionStart!=null?si.selectionStart:si.value.length;si.value=si.value.slice(0,s)+c+si.value.slice(s);si.selectionStart=si.selectionEnd=s+c.length;si.dispatchEvent(new Event("input",{bubbles:true}));}}function del(){if(!si||!si.tagName.match(/INPUT|TEXTAREA/i))return;si.focus();if(!document.execCommand("delete")){var s=si.selectionStart;if(s>0){si.value=si.value.slice(0,s-1)+si.value.slice(s);si.selectionStart=si.selectionEnd=s-1;si.dispatchEvent(new Event("input",{bubbles:true}));}}}function go(){if(!si)return;si.focus();var f=si.closest("form");if(f){f.dispatchEvent(new Event("submit",{bubbles:true,cancelable:true}));}else{si.dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",keyCode:13,bubbles:true}));}}var L="אבגדהוזחטיכלמנסעפצקרשת".split("");var F="ךםןףץ".split("");var ov=document.createElement("div");ov.id=ID;ov.style.cssText="position:fixed;bottom:0;left:0;right:0;background:#1e1e1e;border-top:3px solid #444;padding:10px 8px 16px;z-index:2147483647;direction:rtl;font-family:Arial,sans-serif;box-shadow:0 -4px 20px rgba(0,0,0,.6);";function mk(lbl,fn,bg,col,fl){var b=document.createElement("button");b.textContent=lbl;b.style.cssText="background:"+(bg||"#3a3a3a")+";color:"+(col||"#fff")+";border:1px solid #555;border-radius:7px;font-size:20px;padding:12px 6px;min-width:42px;cursor:pointer;flex:"+(fl||"0 0 auto")+";font-family:Arial,sans-serif;line-height:1;";b.addEventListener("mousedown",function(e){e.preventDefault();});b.addEventListener("click",fn);return b;}var cb=document.createElement("button");cb.textContent="✕";cb.style.cssText="position:absolute;top:8px;left:8px;background:#555;color:#fff;border:none;border-radius:5px;padding:5px 10px;font-size:14px;cursor:pointer;";cb.addEventListener("click",function(){ov.remove();});ov.appendChild(cb);var t=document.createElement("div");t.textContent="מקלדת עברית";t.style.cssText="font-size:12px;color:#888;text-align:center;margin-bottom:8px;";ov.appendChild(t);var r1=document.createElement("div");r1.style.cssText="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px;justify-content:center;";L.forEach(function(l){r1.appendChild(mk(l,function(){ins(l);}));});ov.appendChild(r1);var r2=document.createElement("div");r2.style.cssText="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;";F.forEach(function(l){r2.appendChild(mk(l,function(){ins(l);},"#2e3a2e","#aaddaa"));});r2.appendChild(mk("רווח",function(){ins(" ");},"#333","#aaa","1 1 80px"));r2.appendChild(mk("⌫",del,"#5a2020","#fff"));r2.appendChild(mk("⏎ חפש",go,"#1a4a8a","#fff"));ov.appendChild(r2);document.body.appendChild(ov);})();';
 
-document.getElementById('bm-link').href = 'javascript:' + bm;
+// Fill the textarea
+document.getElementById('code-box').value = 'javascript:' + bm;
+
+function selectCode() {
+  var box = document.getElementById('code-box');
+  box.focus();
+  box.select();
+  try {
+    var ok = document.execCommand('copy');
+    document.getElementById('copied-msg').textContent = ok ? '✓ הקוד הועתק! עכשיו לחץ לחיצה ארוכה על הטקסט ← הדבק בסימניה' : '✓ סומן — לחץ לחיצה ארוכה ← העתק';
+  } catch(e) {
+    document.getElementById('copied-msg').textContent = 'סומן — לחץ לחיצה ארוכה על הטקסט ← העתק';
+  }
+}
 
 // Demo keyboard
 var letters = 'אבגדהוזחטיכלמנסעפצקרשת'.split('');
